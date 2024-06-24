@@ -205,7 +205,7 @@ const NavBar = () => {
           Transition: Fade,
         });
 
-        // console.log(response.data);
+        console.log(response.data);
         setOpenSignup(false);
         setOpen(true);
         // Registration was successful, you can redirect the user or show a success message

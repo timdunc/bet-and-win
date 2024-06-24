@@ -52,7 +52,7 @@ const LeftBar = () => {
     const fetchCountriesData = async () => {
       const api_token =
         "0F12TW7oEzvWYQEermmNDV0hpGdPmiCVzETOf6RKdcZM6VMrRvPxDHwjb6MQ"; // Replace with your actual token
-      const apiUrl = `/v2.0/countries?api_token=${api_token}`;
+      const apiUrl = `https://soccer.sportmonks.com/api/v2.0/countries?api_token=${api_token}`;
 
       try {
         const response = await axios.get(apiUrl);
@@ -66,7 +66,7 @@ const LeftBar = () => {
     const fetchContinentsData = async () => {
       const api_token =
         "0F12TW7oEzvWYQEermmNDV0hpGdPmiCVzETOf6RKdcZM6VMrRvPxDHwjb6MQ"; // Replace with your actual token
-      const apiUrl = `/v2.0/continents?api_token=${api_token}`;
+      const apiUrl = `https://soccer.sportmonks.com/api/v2.0/continents?api_token=${api_token}`;
 
       try {
         const response = await axios.get(apiUrl);
