@@ -83,7 +83,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://betwinner.com/">
+      <Link color="inherit" href="https://betandwinr.com/">
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -159,7 +159,7 @@ const NavBar = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("/api/auth/login", {
+      .post("https://bet-and-win.onrender.com/api/auth/login", {
         phonenumber: phoneNumber,
         pin: password,
       })
@@ -185,7 +185,7 @@ const NavBar = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post("/api/auth/register", {
+      .post("https://bet-and-win.onrender.com/api/auth/register", {
         phonenumber: phoneNumber,
         pin: password,
       })
