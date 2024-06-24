@@ -33,6 +33,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 // import axios from "axios";
+const API_URL = 'https://bet-and-win.onrender.com';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -159,7 +160,7 @@ const NavBar = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("/api/auth/login", {
+      .post(`${API_URL}/api/auth/login`, {
         phonenumber: phoneNumber,
         pin: password,
       })
@@ -185,7 +186,7 @@ const NavBar = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post("/api/auth/register", {
+      .post(`${API_URL}/api/auth/register`, {
         phonenumber: phoneNumber,
         pin: password,
       })
