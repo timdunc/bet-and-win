@@ -14,7 +14,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/api': {
-        target: 'http://localhost:8800',
+        target: 'https://bet-and-win.onrender.com',
         changeOrigin: true,
       },
     },
