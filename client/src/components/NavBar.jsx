@@ -159,7 +159,7 @@ const NavBar = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("https://bet-and-win.onrender.com/api/auth/login", {
+      .post("/api/auth/login", {
         phonenumber: phoneNumber,
         pin: password,
       })
@@ -185,7 +185,7 @@ const NavBar = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post("https://bet-and-win.onrender.com/api/auth/register", {
+      .post("/api/auth/register", {
         phonenumber: phoneNumber,
         pin: password,
       })
