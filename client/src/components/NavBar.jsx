@@ -24,14 +24,17 @@ import {
   Fade,
   FormControlLabel,
   Grid,
-  Link,
   Slide,
   Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
+
+import { Link } from 'react-router-dom';
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+
 const API_URL = "https://bet-and-win.onrender.com";
 
 const Search = styled("div")(({ theme }) => ({
@@ -367,7 +370,7 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <a href="/login">
+              <Link to="/login">
                 <IconButton
                   size="large"
                   aria-label="show 17 new notifications"
@@ -377,7 +380,7 @@ const NavBar = () => {
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
-              </a>
+              </Link>
               <div style={{ display: "flex", alignItems: "center" }}>
                 {userData?.phonenumber ? (
                   <>
