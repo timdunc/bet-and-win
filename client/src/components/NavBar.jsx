@@ -361,6 +361,7 @@ const NavBar = () => {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Link to="/register">
               <IconButton
                 size="large"
                 aria-label="show 4 new mails"
@@ -370,6 +371,7 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
+              </Link>
               <Link to="/login">
                 <IconButton
                   size="large"
