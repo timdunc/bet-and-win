@@ -1,24 +1,35 @@
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import NavBar from "./components/NavBar";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "*",
+    element: <h1>404</h1>,
+  },
+]);
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route path="/" exact element={<Homepage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Router>
+        <RouterProvider router={router} />
       </ThemeProvider>
     </>
   );
