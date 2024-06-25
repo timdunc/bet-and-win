@@ -32,7 +32,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-const API_URL = 'https://bet-and-win.onrender.com';
+const API_URL = "https://bet-and-win.onrender.com";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -105,7 +105,6 @@ import Cookies from "js-cookie";
 import { useTheme } from "@mui/styles";
 
 const NavBar = () => {
-
   const theme = useTheme();
 
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -229,11 +228,6 @@ const NavBar = () => {
     window.location.reload();
   };
 
-
-
-
-
-
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -309,7 +303,11 @@ const NavBar = () => {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={userData?.phonenumber ? handleProfileMenuOpen : handleClickOpen}>
+      <MenuItem
+        onClick={
+          userData?.phonenumber ? handleProfileMenuOpen : handleClickOpen
+        }
+      >
         {userData?.phonenumber ? (
           <>
             <IconButton
@@ -344,7 +342,10 @@ const NavBar = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1, "& button": { m: 1 } }}>
-        <AppBar position="static" style={{ backgroundColor: theme.palette.primary.main }}>
+        <AppBar
+          position="static"
+          style={{ backgroundColor: theme.palette.primary.main }}
+        >
           <Toolbar>
             <Search>
               <SearchIconWrapper>
@@ -366,15 +367,17 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <a href="/login">
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <Badge badgeContent={17} color="error">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              </a>
               <div style={{ display: "flex", alignItems: "center" }}>
                 {userData?.phonenumber ? (
                   <>
