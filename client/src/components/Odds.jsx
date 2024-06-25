@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import { Avatar } from "@mui/material";
 
 import GamesData from "../footballData.json";
@@ -60,23 +60,6 @@ const Odds = () => {
   //   fetchGamesData();
   // }, []);
 
-  console.log(GamesData);
-
-  const seasons = GamesData.map((item) => item.season.name);
-
-  const uniqueSeasonNames = [...new Set(seasons)];
-
-  //   const teamsBySeason = GamesData.map(item => {
-  //     return {
-  //         seasonName: item.season.name,
-  //         home_team: item.home_team.name,
-  //         home_team_logo: item.home_team.logo,
-  //         away_team: item.away_team.name,
-  //         away_team_logo: item.away_team.logo,
-  //         start_at: item.start_at
-  //     };
-  // });
-
   const teamsBySeason = GamesData.reduce((acc, item) => {
     const seasonName = item.season.name;
 
@@ -102,17 +85,14 @@ const Odds = () => {
     };
   });
 
-  console.log(uniqueTeamsBySeason);
-
   return (
-    <div>
-      {" "}
-      {uniqueTeamsBySeason.map((item, i) => (
-        <>
+    <>
+      {uniqueTeamsBySeason.map((item) => (
+        <div key={item.seasonName}>
           <TableContainer
             component={Paper}
             style={{ marginTop: "10px" }}
-            key={i}
+            
           >
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
@@ -128,7 +108,7 @@ const Odds = () => {
               </TableHead>
                 <TableBody>
               {item.games.map((item) => (
-                  <StyledTableRow key={item.home_team_logo}>
+                  <StyledTableRow key={item.home_team_logo + item.away_team_logo}>
                     <StyledTableCell component="th" scope="row">
                       <div style={{ display: "flex", fontWeight: "bold" }}>
                         {item.home_team}
@@ -159,9 +139,9 @@ const Odds = () => {
                 </TableBody>
             </Table>
           </TableContainer>
-        </>
+        </div>
       ))}
-    </div>
+    </>
   );
 };
 

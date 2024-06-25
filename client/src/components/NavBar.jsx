@@ -32,7 +32,6 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-// import axios from "axios";
 const API_URL = 'https://bet-and-win.onrender.com';
 
 const Search = styled("div")(({ theme }) => ({
@@ -84,7 +83,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://betandwinr.com/">
+      <Link color="inherit" href="https://betandwin.com/">
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -103,8 +102,12 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useTheme } from "@mui/styles";
 
 const NavBar = () => {
+
+  const theme = useTheme();
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -341,7 +344,7 @@ const NavBar = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1, "& button": { m: 1 } }}>
-        <AppBar position="static" style={{ backgroundColor: "#212121" }}>
+        <AppBar position="static" style={{ backgroundColor: theme.palette.primary.main }}>
           <Toolbar>
             <Search>
               <SearchIconWrapper>
