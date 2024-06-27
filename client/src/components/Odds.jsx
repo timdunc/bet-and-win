@@ -94,7 +94,7 @@ const Odds = () => {
             style={{ marginTop: "10px" }}
             
           >
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <Table sx={{  }} aria-label="customized table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>{item.seasonName}</StyledTableCell>

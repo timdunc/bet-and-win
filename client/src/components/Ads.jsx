@@ -1,9 +1,10 @@
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/styles";
 import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { useState } from "react";
-import { Paper } from "@mui/material";
+import {  Paper, Toolbar } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -26,11 +27,54 @@ const images = [
   {
     label: "Goč, Serbia",
     imgPath:
-      "https://img.freepik.com/free-photo/soccer-balloon-camp-monochrome-scene-generative-ai_188544-9745.jpg?w=1380&t=st=1718985239~exp=1718985839~hmac=a219c49c38c1a054552412153171dd6dd35fedc5970667c29e11e16df671d1cc",
+    "https://img.freepik.com/free-photo/soccer-balloon-camp-monochrome-scene-generative-ai_188544-9745.jpg?w=1380&t=st=1718985239~exp=1718985839~hmac=a219c49c38c1a054552412153171dd6dd35fedc5970667c29e11e16df671d1cc",
   },
 ];
 
+
+const useStyles = makeStyles((theme) => ({
+  ads: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "red",
+    },
+    [theme.breakpoints.down("md")]: {
+      // marginTop: "10px",
+    },
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "blue",
+    },
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "purple",
+    },
+    [theme.breakpoints.up("xl")]: {
+      backgroundColor: "orange",
+    },
+  },
+
+  toolbar: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "red",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+      marginTop: "5px",
+    },
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "blue",
+    },
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "purple",
+    },
+    [theme.breakpoints.up("xl")]: {
+      backgroundColor: "orange",
+    },
+  },
+}));
+
 const Ads = () => {
+
+  const classes = useStyles();
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -38,10 +82,12 @@ const Ads = () => {
     setActiveStep(step);
   };
 
+
   return (
     <div>
+      <Toolbar className={classes.toolbar}/>
       <Paper>
-        <Box sx={{ maxWidth: "100%", flexGrow: 1 }}>
+        <Box sx={{  flexGrow: 1, width: "100%" }} className={classes.ads}>
           <AutoPlaySwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={activeStep}

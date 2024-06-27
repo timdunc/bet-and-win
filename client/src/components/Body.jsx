@@ -1,19 +1,8 @@
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
 import Ads from "./Ads";
 import Odds from "./Odds";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 // const optionsNFL = {
 //   method: "GET",
@@ -25,42 +14,67 @@ const Item = styled(Paper)(({ theme }) => ({
 //   },
 // };
 
+import { makeStyles } from "@mui/styles";
+import { Toolbar } from "@mui/material";
+
+const useStyles = makeStyles((theme) => ({
+  feed: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "white",
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "white",
+    },
+    [theme.breakpoints.down("md")]: {
+      backgroundColor: "white",
+      // width: "100vw",
+    },
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "white",
+    },
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "white",
+    },
+    [theme.breakpoints.up("xl")]: {
+      backgroundColor: "white",
+    },
+  },
+}));
+
 const Body = () => {
-//   const [data, setData] = useState([]);
+  const classes = useStyles();
+  // const [data, setData] = useState([]);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.request(optionsNFL);
-//         console.log(response.data);
-//         setData(response.data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.request(optionsNFL);
+  //       console.log(response.data);
+  //       setData(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-//     fetchData();
-//   }, []);
+  //   fetchData();
+  // }, []);
 
   return (
-    <div>
-      <Box
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-        }}
-        style={{ height: "100vh" }}
-      >
-        <Grid>
-          <Grid item xs={6} style={{}}>
-            <Item>
-              <Ads />
-              <Odds />
-            </Item>
-          </Grid>
-        </Grid>
-      </Box>
-    </div>
+    <Box
+      sx={{ padding: 0 }}
+      style={{
+        height: "100vh",
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+        // width: "100%",
+      }}
+      className={classes.feed}
+    >
+      <Ads />
+      <Odds />
+      <Toolbar />
+    </Box>
   );
 };
 

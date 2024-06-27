@@ -1,43 +1,44 @@
 import Body from "../components/Body";
 import NavBar from "../components/NavBar";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Divider from "@mui/material/Divider";
-import LeftBar from "../components/LeftBar";
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import AvTimerIcon from "@mui/icons-material/AvTimer";
-
-const drawerWidth = 240;
-
-const noScrollbarStyle = {
-  overflow: "scroll",
-  msOverflowStyle: "none", // Internet Explorer 10+
-  scrollbarWidth: "none", // Firefox
-};
 import { makeStyles } from "@mui/styles";
+import DrawerLeft from "../components/DrawerLeft";
+import DrawerRight from "../components/DrawerRight";
+import BottomNav from "../components/BottomNav";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  main: {
     [theme.breakpoints.down("xs")]: {
       backgroundColor: "red",
     },
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.down("md")]: {
       backgroundColor: "green",
     },
     [theme.breakpoints.up("md")]: {
       backgroundColor: "blue",
+    },
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "purple",
+    },
+    [theme.breakpoints.up("xl")]: {
+      backgroundColor: "orange",
+    },
+  },
+
+  body: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "red",
+    },
+    [theme.breakpoints.up("sm")]: {
+    },
+    [theme.breakpoints.down("md")]: {
+      padding: "24px",
+      backgroundColor: "green",
+    },
+    [theme.breakpoints.up("md")]: {
+      // padding: "24px",
     },
     [theme.breakpoints.up("lg")]: {
       backgroundColor: "purple",
@@ -52,98 +53,38 @@ const Homepage = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          sx={{
-            width: `calc(100% - ${drawerWidth}px)`,
-            ml: `${drawerWidth}px`,
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-          }}
-        >
-          <NavBar />
-        </AppBar>
+    <>
+      <div style={{  }}>
+        <Box sx={{ display: "flex" }} className={classes.main}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            sx={{
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+            }}
+            className={classes.AppBar}
+          >
+            <NavBar />
+          </AppBar>
 
-        <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="permanent"
-          anchor="left"
-          className={classes.root}
-        >
-          <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1 }}
-              style={{ fontSize: "28px", fontWeight: "bold" }}
-            >
-              BETandWIN
-            </Typography>
-            {/* <CustomComponent /> */}
-          </Toolbar>
-          <div style={noScrollbarStyle}>
-            <Divider />
-            <List>
-              {["Home", "Live", "Upcomming"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon style={{ color: "black" }}>
-                      {index === 0 && <HomeIcon />}
-                      {index === 1 && <LiveTvIcon />}
-                      {index === 2 && <AvTimerIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-            <Divider />
-            <LeftBar />
-            <Divider />
-          </div>
-        </Drawer>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            bgcolor: "background.default",
-            p: 3,
-          }}
-          style={{}}
-        >
-          <Toolbar />
-          <Body />
+          <DrawerLeft className={classes.drawerleft} />
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              bgcolor: "background.default",
+              p: 3,
+            }}
+            style={{ width: "100%", padding: 0 }}
+            className={classes.body}
+          >
+            <Body />
+          </Box>
+          <DrawerRight />
         </Box>
-        <Drawer
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="permanent"
-          anchor="right"
-        >
-          <Toolbar />
-          <Divider />
-          <LeftBar />
-          <Divider />
-          <LeftBar />
-        </Drawer>
-      </Box>
-    </div>
+      </div>
+      <BottomNav />
+    </>
   );
 };
 
