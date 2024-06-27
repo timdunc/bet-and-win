@@ -61,7 +61,7 @@ const Body = () => {
 
   return (
     <Box
-      sx={{ padding: 0 }}
+      sx={{ }}
       style={{
         height: "100vh",
         flexGrow: 1,

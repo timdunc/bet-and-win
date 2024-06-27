@@ -31,11 +31,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       backgroundColor: "red",
     },
-    [theme.breakpoints.up("sm")]: {
-    },
+    [theme.breakpoints.up("sm")]: {},
     [theme.breakpoints.down("md")]: {
       // backgroundColor: "green",
       padding: 0,
+      overflow: "scroll",
+      msOverflowStyle: "none", // Internet Explorer 10+
+      scrollbarWidth: "none", // Firefox
     },
     [theme.breakpoints.up("md")]: {
       padding: "24px",
@@ -54,7 +56,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div style={{  }}>
+      <div style={{}}>
         <Box sx={{ display: "flex" }} className={classes.main}>
           <CssBaseline />
           <AppBar

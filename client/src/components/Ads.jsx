@@ -60,10 +60,10 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "5px",
     },
     [theme.breakpoints.up("md")]: {
-      backgroundColor: "blue",
+      // backgroundColor: "blue",
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: "purple",
+      // backgroundColor: "purple",
     },
     [theme.breakpoints.up("xl")]: {
       backgroundColor: "orange",
