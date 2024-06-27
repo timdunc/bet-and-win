@@ -34,11 +34,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
     },
     [theme.breakpoints.down("md")]: {
-      padding: "24px",
-      backgroundColor: "green",
+      // backgroundColor: "green",
+      padding: 0,
     },
     [theme.breakpoints.up("md")]: {
-      // padding: "24px",
+      padding: "24px",
     },
     [theme.breakpoints.up("lg")]: {
       backgroundColor: "purple",
@@ -69,13 +69,13 @@ const Homepage = () => {
 
           <DrawerLeft className={classes.drawerleft} />
           <Box
-            component="main"
+            // component="main"
             sx={{
               flexGrow: 1,
               bgcolor: "background.default",
-              p: 3,
+              // p: 3,
             }}
-            style={{ width: "100%", padding: 0 }}
+            style={{ width: "100%" }}
             className={classes.body}
           >
             <Body />
