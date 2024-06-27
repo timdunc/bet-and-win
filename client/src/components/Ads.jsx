@@ -38,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "red",
     },
     [theme.breakpoints.down("md")]: {
-      // marginTop: "10px",
+      // height: "150px",
     },
     [theme.breakpoints.up("md")]: {
-      backgroundColor: "blue",
+      // height: "300px",
     },
     [theme.breakpoints.up("lg")]: {
       backgroundColor: "purple",
@@ -69,6 +69,25 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "orange",
     },
   },
+
+
+  slider: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "red",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "150px",
+    },
+    [theme.breakpoints.up("md")]: {
+      height: "300px",
+    },
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "purple",
+    },
+    [theme.breakpoints.up("xl")]: {
+      backgroundColor: "orange",
+    },
+  },
 }));
 
 const Ads = () => {
@@ -84,10 +103,10 @@ const Ads = () => {
 
 
   return (
-    <div>
+    <div className={classes.ads}>
       <Toolbar className={classes.toolbar}/>
       <Paper>
-        <Box sx={{  flexGrow: 1, width: "100%" }} className={classes.ads}>
+        <Box sx={{  flexGrow: 1, width: "100%" }} >
           <AutoPlaySwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={activeStep}
@@ -105,9 +124,10 @@ const Ads = () => {
                       width: "100%",
                       objectFit: "cover",
                     }}
-                    style={{height: "300px"}}
+                    // style={{height: "300px"}}
                     src={step.imgPath}
                     alt={step.label}
+                    className={classes.slider}
                   />
                 ) : null}
               </div>
