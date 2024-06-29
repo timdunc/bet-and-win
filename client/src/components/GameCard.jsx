@@ -10,7 +10,7 @@ const GameCard = ({ league}) => {
                 marginBottom: "2px",
                 display: "flex",
                 flexDirection: "column",
-                width: 295,
+                // width: 295,
               }}
               // style={{borderRadiusTop: "5px",}}
             >
@@ -62,7 +62,7 @@ const GameCard = ({ league}) => {
                       />
                     </div>
                     <div>
-                      <Typography style={{ fontSize: "14px" }}>
+                      <Typography style={{ fontSize: "14px" }} noWrap>
                         {league.home_team}
                       </Typography>{" "}
                     </div>
@@ -106,7 +106,7 @@ const GameCard = ({ league}) => {
                       />
                     </div>
                     <div>
-                      <Typography style={{ fontSize: "14px" }}>
+                      <Typography style={{ fontSize: "14px" }} noWrap>
                         {league.away_team}
                       </Typography>{" "}
                     </div>
