@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { useState } from "react";
-import {  Paper } from "@mui/material";
+import { Paper, Toolbar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -27,10 +27,9 @@ const images = [
   {
     label: "Goč, Serbia",
     imgPath:
-    "https://img.freepik.com/free-photo/soccer-balloon-camp-monochrome-scene-generative-ai_188544-9745.jpg?w=1380&t=st=1718985239~exp=1718985839~hmac=a219c49c38c1a054552412153171dd6dd35fedc5970667c29e11e16df671d1cc",
+      "https://img.freepik.com/free-photo/soccer-balloon-camp-monochrome-scene-generative-ai_188544-9745.jpg?w=1380&t=st=1718985239~exp=1718985839~hmac=a219c49c38c1a054552412153171dd6dd35fedc5970667c29e11e16df671d1cc",
   },
 ];
-
 
 const useStyles = makeStyles((theme) => ({
   ads: {
@@ -44,10 +43,10 @@ const useStyles = makeStyles((theme) => ({
       // height: "300px",
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: "purple",
+      // backgroundColor: "purple",
     },
     [theme.breakpoints.up("xl")]: {
-      backgroundColor: "orange",
+      // backgroundColor: "orange",
     },
   },
 
@@ -66,10 +65,9 @@ const useStyles = makeStyles((theme) => ({
       // backgroundColor: "purple",
     },
     [theme.breakpoints.up("xl")]: {
-      backgroundColor: "orange",
+      // backgroundColor: "orange",
     },
   },
-
 
   slider: {
     [theme.breakpoints.down("xs")]: {
@@ -91,7 +89,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Ads = () => {
-
   const classes = useStyles();
 
   const theme = useTheme();
@@ -101,17 +98,17 @@ const Ads = () => {
     setActiveStep(step);
   };
 
-
   return (
     <div className={classes.ads}>
       {/* <Toolbar className={classes.toolbar}/> */}
       <Paper>
-        <Box sx={{  flexGrow: 1, width: "100%" }} >
+        <Box sx={{ flexGrow: 1, width: "100%" }}>
           <AutoPlaySwipeableViews
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={activeStep}
             onChangeIndex={handleStepChange}
             enableMouseEvents
+            style={{ borderRadius: "5px" }}
           >
             {images.map((step, index) => (
               <div key={step.label}>
@@ -124,7 +121,7 @@ const Ads = () => {
                       width: "100%",
                       objectFit: "cover",
                     }}
-                    // style={{height: "300px"}}
+                    style={{ borderRadius: "5px" }}
                     src={step.imgPath}
                     alt={step.label}
                     className={classes.slider}
