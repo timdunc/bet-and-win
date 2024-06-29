@@ -1,15 +1,3 @@
-import { useTheme } from "@mui/styles";
-import { useState } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Paper,
-  Toolbar,
-  Typography,
-} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -100,15 +88,11 @@ const Slider = () => {
     };
   });
 
-  console.log(uniqueTeamsBySeason.at(2));
-
   const [, oneLeague] = uniqueTeamsBySeason;
 
   const leagues = [oneLeague.games];
 
   const newLeagues = leagues.at(0);
-
-  console.log(newLeagues);
 
   return (
     <div className={classes.ads} style={{ marginTop: "10px" }}>
@@ -123,10 +107,10 @@ const Slider = () => {
             scrollbarWidth: "none",
           }}
         >
-          {newLeagues.map((league, i) => (
-            <>
-              <GameCard key={i} league={league} />
-            </>
+          {newLeagues.map((league) => (
+            <div key={league.home_team + league.away_team}>
+              <GameCard league={league} />
+            </div>
           ))}
         </div>
         <div></div>
