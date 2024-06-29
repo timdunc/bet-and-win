@@ -16,27 +16,44 @@ import Odds from "./Odds";
 
 import { makeStyles } from "@mui/styles";
 import { Toolbar } from "@mui/material";
+import Slider from "./Slider";
 
 const useStyles = makeStyles((theme) => ({
   feed: {
     [theme.breakpoints.down("xs")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
     },
     [theme.breakpoints.down("sm")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
     },
     [theme.breakpoints.down("md")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
       // width: "100vw",
     },
     [theme.breakpoints.up("md")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
     },
     [theme.breakpoints.up("xl")]: {
-      backgroundColor: "white",
+      // backgroundColor: "white",
+    },
+  },
+  bottomToolbar: {
+    [theme.breakpoints.down("xs")]: {
+      // backgroundColor: "red",
+    },
+    [theme.breakpoints.down("md")]: {},
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+      // backgroundColor: "blue",
+    },
+    [theme.breakpoints.up("lg")]: {
+      // backgroundColor: "purple",
+    },
+    [theme.breakpoints.up("xl")]: {
+      // backgroundColor: "orange",
     },
   },
 }));
@@ -61,19 +78,20 @@ const Body = () => {
 
   return (
     <Box
-      sx={{ }}
+      sx={{}}
       style={{
-        height: "100vh",
+        height: "100%",
         flexGrow: 1,
         display: "flex",
         flexDirection: "column",
-        // width: "100%",
+        // width: "100vw",
       }}
       className={classes.feed}
     >
       <Ads />
+      <Slider />
       <Odds />
-      <Toolbar />
+      <Toolbar className={classes.bottomToolbar} />
     </Box>
   );
 };
