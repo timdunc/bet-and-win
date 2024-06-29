@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { useState } from "react";
-import {  Paper, Toolbar } from "@mui/material";
+import {  Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -104,7 +104,7 @@ const Ads = () => {
 
   return (
     <div className={classes.ads}>
-      <Toolbar className={classes.toolbar}/>
+      {/* <Toolbar className={classes.toolbar}/> */}
       <Paper>
         <Box sx={{  flexGrow: 1, width: "100%" }} >
           <AutoPlaySwipeableViews
