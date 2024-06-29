@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = ({ loggedIn, loggedInUser }) => {
+const NavBar = ({ loggedInUser }) => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -98,6 +98,10 @@ const NavBar = ({ loggedIn, loggedInUser }) => {
 
   const linkToLogin = () => {
     Navigate("/login");
+  };
+
+  const linkToHome = () => {
+    Navigate("/");
   };
 
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -225,7 +229,7 @@ const NavBar = ({ loggedIn, loggedInUser }) => {
           userData?.phonenumber ? handleProfileMenuOpen : handleClickOpen
         }
       >
-        {loggedIn ? (
+        {userData?.phonenumber ? (
           <>
             <IconButton
               size="large"
@@ -236,11 +240,19 @@ const NavBar = ({ loggedIn, loggedInUser }) => {
             >
               <AccountCircle />
             </IconButton>
-            <p>Profile</p>
+            <p>{userData.phonenumber}</p>
           </>
         ) : (
           <>
-            <Link onClick={linkToLogin}>
+            <Link
+              onClick={linkToLogin}
+              style={{
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                color: "black",
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -268,83 +280,103 @@ const NavBar = ({ loggedIn, loggedInUser }) => {
         <AppBar
           position="fixed"
           style={{ backgroundColor: theme.palette.primary.main }}
+          sx={{
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
         >
           <Toolbar>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                {userData?.phonenumber ? (
-                  <>
-                    {" "}
-                    <Typography>
-                      RWF
-                      {loggedInUser?.balance}
-                      .00
-                    </Typography>
-                    <IconButton
-                      size="large"
-                      edge="end"
-                      aria-label="account of current user"
-                      aria-controls={menuId}
-                      aria-haspopup="true"
-                      onClick={handleProfileMenuOpen}
-                      color="inherit"
-                    >
-                      <AccountCircle />
-                    </IconButton>
-                  </>
-                ) : (
-                  <Button
-                    edge="end"
-                    variant="contained"
-                    size="small"
-                    style={{ height: "30px", backgroundColor: "#424242" }}
-                    onClick={linkToLogin}
-                  >
-                    Login
-                  </Button>
-                )}
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: "10px"}}>
+              <div>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ display: { sm: "block" } }}
+                  style={{ cursor: "pointer" }}
+                  onClick={linkToHome}
+                >
+                  BETAND
+                </Typography>
               </div>
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </Box>
+              <div>
+                <Search style={{ width: "100%" }}>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
+              </div>
+              <div>
+                <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="show 4 new mails"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={4} color="error">
+                      <MailIcon />
+                    </Badge>
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    aria-label="show 17 new notifications"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={17} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    {userData?.phonenumber ? (
+                      <>
+                        {" "}
+                        <Typography>
+                          RWF
+                          {loggedInUser?.balance}
+                          .00
+                        </Typography>
+                        <IconButton
+                          size="large"
+                          edge="end"
+                          aria-label="account of current user"
+                          aria-controls={menuId}
+                          aria-haspopup="true"
+                          onClick={handleProfileMenuOpen}
+                          color="inherit"
+                        >
+                          <AccountCircle />
+                        </IconButton>
+                      </>
+                    ) : (
+                      <Button
+                        edge="end"
+                        variant="contained"
+                        size="small"
+                        style={{ height: "30px", backgroundColor: "#424242" }}
+                        onClick={linkToLogin}
+                      >
+                        Login
+                      </Button>
+                    )}
+                  </div>
+                </Box>
+                <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={handleMobileMenuOpen}
+                    color="inherit"
+                  >
+                    <MoreIcon />
+                  </IconButton>
+                </Box>
+              </div>
+            </div>
           </Toolbar>
         </AppBar>
         {renderMobileMenu}
