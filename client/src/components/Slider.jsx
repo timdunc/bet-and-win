@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
   ads: {
     [theme.breakpoints.down("xs")]: {
-      backgroundColor: "red",
+      // backgroundColor: "red",
     },
     [theme.breakpoints.down("md")]: {
       // height: "150px",
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
   toolbar: {
     [theme.breakpoints.down("xs")]: {
-      backgroundColor: "red",
+      // backgroundColor: "red",
     },
     [theme.breakpoints.down("md")]: {
       display: "block",
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
   slider: {
     [theme.breakpoints.down("xs")]: {
-      backgroundColor: "red",
+      // backgroundColor: "red",
     },
     [theme.breakpoints.down("md")]: {
       height: "150px",
@@ -49,10 +49,29 @@ const useStyles = makeStyles((theme) => ({
       height: "300px",
     },
     [theme.breakpoints.up("lg")]: {
-      backgroundColor: "purple",
+      // backgroundColor: "purple",
     },
     [theme.breakpoints.up("xl")]: {
-      backgroundColor: "orange",
+      // backgroundColor: "orange",
+    },
+  },
+
+
+  mainSlider: {
+    [theme.breakpoints.down("xs")]: {
+      
+    },
+    [theme.breakpoints.down("md")]: {
+      padding: "0 10px",
+    },
+    [theme.breakpoints.up("md")]: {
+      padding: 0
+    },
+    [theme.breakpoints.up("lg")]: {
+      
+    },
+    [theme.breakpoints.up("xl")]: {
+      
     },
   },
 }));
@@ -106,6 +125,7 @@ const Slider = () => {
             msOverflowStyle: "none", // Internet Explorer 10+
             scrollbarWidth: "none",
           }}
+          className={classes.mainSlider}
         >
           {newLeagues.map((league) => (
             <div key={league.home_team + league.away_team}>
